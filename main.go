@@ -113,8 +113,8 @@ func downloadFile(urlInput string, subpath string) {
 	defer res.Body.Close()
 
 	/* return error if the response code is not in the 200s */
-	if res.StatusCode >= 200 && res.StatusCode <= 299 {
-		fmt.Println("Bad response status code:", res.Status)
+	if res.StatusCode <= 200 && res.StatusCode >= 299 {
+		fmt.Println("Bad response status code:", res.StatusCode)
 		return
 	}
 
