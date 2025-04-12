@@ -63,6 +63,6 @@ func getUrlFromUser() (string, error) {
 }
 
 func isValidUrl(rawUrl string) bool {
-	match, _ := regexp.MatchString(`^http(s)?:\/\/.*\..*\/$`, rawUrl)
+	match, _ := regexp.MatchString(`^http(s)?:\/\/.*\..*\/.*$`, rawUrl)
 	return match
 }
