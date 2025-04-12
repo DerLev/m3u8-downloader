@@ -28,6 +28,7 @@ func main() {
 	// uaPtr := flag.String("user-agent", "", "user agent to be used for downloading")
 	// referrerPtr := flag.String("referrer", "", "referrer to be used for downloading")
 	// dataPtr := flag.String("data", "", "base64 config for use with other applications")
+	dirNamePtr := flag.String("dirname", "", "name of the directory to download into")
 	flag.Parse()
 
 	url := ""
@@ -48,7 +49,13 @@ func main() {
 	fmt.Println(url)
 	/* download the file */
 	now := time.Now().Format("2006-01-02 15-04-05")
-	downloadFile(url, now)
+	var dirName string
+	if len(*dirNamePtr) > 0 {
+		dirName = *dirNamePtr
+	} else {
+		dirName = now
+	}
+	downloadFile(url, dirName)
 }
 
 /* prompts the user for the url input */
